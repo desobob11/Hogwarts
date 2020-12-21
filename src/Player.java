@@ -1,7 +1,7 @@
 import java.util.*;
 
 public class Player {
-	
+	private TextVisualizer text = new TextVisualizer();
 	private String name;
 	private int gender;
 	private String house;
@@ -49,7 +49,6 @@ public class Player {
 
 	public void createCharacter() {
 		Scanner input = new Scanner(System.in);
-		TextVisualizer text = new TextVisualizer();
 
 		text.initiateCreateCharacter();
 		text.characterName();
@@ -71,6 +70,15 @@ public class Player {
 		text.characterCreationComplete(this);
 		input.close();
 	}
+
+	public void sortHouse() {
+		text.enterGreatHall(this);
+
+
+	}
+
+
+
 
 
 

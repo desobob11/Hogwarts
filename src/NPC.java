@@ -49,6 +49,27 @@ public class NPC {
         return fullName;
     }
 
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getFirstWord() {
+        return firstWord;
+    }
+
+    public String getLastWord() {
+        return lastWord;
+    }
+
+    public void setLastName(String name) {
+        lastName = name;
+    }
+
+    public void setFullName(String name) {
+        fullName = name;
+    }
+
+
     public void setFirstName() throws IOException {
         String extension;
         if (getGender() == 1) {
@@ -71,6 +92,7 @@ public class NPC {
         firstName = firstNames.get(random);
     }
 
+
     public void setFirstWord() throws IOException {
         BufferedReader br = new BufferedReader(new FileReader("text/FirstWord.txt"));
         ArrayList<String> firstNames = new ArrayList<String>();
@@ -84,6 +106,7 @@ public class NPC {
         int random = ran.nextInt(firstNames.size() - 1);
         firstWord = firstNames.get(random);
     }
+
 
     public void setLastWord() throws IOException {
         BufferedReader br = new BufferedReader(new FileReader("text/LastWord.txt"));
@@ -99,25 +122,6 @@ public class NPC {
         lastWord = firstNames.get(random);
     }
 
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public String getFirstWord() {
-        return firstWord;
-    }
-
-    public String getLastWord() {
-        return lastWord;
-    }
-
-    public void setLastName(String name) {
-        lastName = name;
-    }
-
-    public void setFullName(String name) {
-        fullName = name;
-    }
 
     public void setTitle(String name) {
         title = name;
@@ -133,6 +137,7 @@ public class NPC {
         setFullName(stringFullName);
         setTitle(stringTitle);
     }
+
 
     public void greetPlayer(Player player, TextVisualizer text) {
         if (location == player.getLocation() && getReadyforSpeech() == true ) {

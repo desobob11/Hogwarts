@@ -9,9 +9,32 @@ public class Professor {
     private String lastWord;
     private String fullName;
     private String lastName;
+    private String title;
+    private int gender;
+
+    public void setGender() {
+        Random ran = new Random();
+        gender = ran.nextInt(2);
+    }
+
+    public int getGender() {
+        return gender;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public String getFullName() {
+        return fullName;
+    }
 
     public void setFirstName() throws IOException {
-        BufferedReader br = new BufferedReader(new FileReader("text/FirstNames"));
+        BufferedReader br = new BufferedReader(new FileReader("text/FirstNames.txt"));
         ArrayList<String> firstNames = new ArrayList<String>();
         Random ran = new Random();
 
@@ -25,7 +48,7 @@ public class Professor {
     }
 
     public void setFirstWord() throws IOException {
-        BufferedReader br = new BufferedReader(new FileReader("text/FirstWord"));
+        BufferedReader br = new BufferedReader(new FileReader("text/FirstWord.txt"));
         ArrayList<String> firstNames = new ArrayList<String>();
         Random ran = new Random();
 
@@ -39,7 +62,7 @@ public class Professor {
     }
 
     public void setLastWord() throws IOException {
-        BufferedReader br = new BufferedReader(new FileReader("text/LastWord"));
+        BufferedReader br = new BufferedReader(new FileReader("text/LastWord.txt"));
         ArrayList<String> firstNames = new ArrayList<String>();
         Random ran = new Random();
 
@@ -68,14 +91,11 @@ public class Professor {
         setFirstName();
         setFirstWord();
         setLastWord();
-        String lastName = firstWord + lastWord;
-        String fullName = firstName + " " + lastName;
-        System.out.println(fullName);
-        System.out.println(lastName);
-
-
-
-
+        String stringLastName = getFirstWord() + getLastWord();
+        String stringFullName = getFirstName() + " " + stringLastName;
+        lastName = stringLastName;
+        fullName = stringFullName;
+        title = "Professor " + getLastName();
     }
 
 

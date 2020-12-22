@@ -1,5 +1,14 @@
+import java.io.*;
+import java.util.*;
+
 
 public class TextVisualizer {
+    private ArrayList<String> studentGreetings = new ArrayList<String>();
+
+    public ArrayList<String> getStudentGreetings() {
+        return studentGreetings;
+    }
+
 
     //ZONE--------------------------------------------------------------------------------------------------------------
     public void searchContents() {
@@ -87,7 +96,18 @@ public class TextVisualizer {
                  + player.getName() + ", you will be going first.");
     }
 
+    //NPC---------------------------------------------------------------------------------------------------------------
+    public void studentGreetings(Player player) {
+        String sample1 = "Hello " + player.getName() + "! How's it going? I hope\n" +
+                "to see you at the Quidditch Match this week!";
 
+        String sample2 = "Fuck off " + player.getName() + ". You're a faggot";
+
+        String sample3 = "God I'm so fucking horny my man";
+        studentGreetings.add(sample1);
+        studentGreetings.add(sample2);
+        studentGreetings.add(sample3);
+    }
 
 
 

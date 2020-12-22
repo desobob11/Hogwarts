@@ -6,7 +6,7 @@ public class Player {
 	private int gender;
 	private String house;
 	private ArrayList<Object> inventory = new ArrayList<Object>();
-	private Zone location;
+	private Zone location = null;
 
 	public Player() {
 	}

@@ -69,6 +69,18 @@ public class NPC {
         fullName = name;
     }
 
+    public String selectWord(String extension, ArrayList<String> array) throws IOException {
+        BufferedReader br = new BufferedReader(new FileReader(extension));
+        Random ran = new Random();
+
+        String line = br.readLine();
+        while (line != null) {
+            line = br.readLine();
+            array.add(line);
+        }
+        int random = ran.nextInt(array.size() - 1);
+        return array.get(random);
+    }
 
     public void setFirstName() throws IOException {
         String extension;
@@ -78,54 +90,30 @@ public class NPC {
         else {
             extension = "text/FirstNames.txt";
         }
-
-        BufferedReader br = new BufferedReader(new FileReader(extension));
         ArrayList<String> firstNames = new ArrayList<String>();
-        Random ran = new Random();
+        firstName = selectWord(extension, firstNames);
 
-        String line = br.readLine();
-        while (line != null) {
-            line = br.readLine();
-            firstNames.add(line);
-        }
-        int random = ran.nextInt(firstNames.size() - 1);
-        firstName = firstNames.get(random);
     }
 
 
     public void setFirstWord() throws IOException {
-        BufferedReader br = new BufferedReader(new FileReader("text/FirstWord.txt"));
-        ArrayList<String> firstNames = new ArrayList<String>();
-        Random ran = new Random();
-
-        String line = br.readLine();
-        while (line != null) {
-            line = br.readLine();
-            firstNames.add(line);
-        }
-        int random = ran.nextInt(firstNames.size() - 1);
-        firstWord = firstNames.get(random);
+        String extension = "text/FirstWord.txt";
+        ArrayList<String> firstWords = new ArrayList<String>();
+        firstWord = selectWord(extension, firstWords);
     }
 
 
     public void setLastWord() throws IOException {
-        BufferedReader br = new BufferedReader(new FileReader("text/LastWord.txt"));
-        ArrayList<String> firstNames = new ArrayList<String>();
-        Random ran = new Random();
-
-        String line = br.readLine();
-        while (line != null) {
-            line = br.readLine();
-            firstNames.add(line);
-        }
-        int random = ran.nextInt(firstNames.size() - 1);
-        lastWord = firstNames.get(random);
+        String extension = "text/LastWord.txt";
+        ArrayList<String> lastWords = new ArrayList<String>();
+        lastWord = selectWord(extension, lastWords);
     }
 
 
     public void setTitle(String name) {
         title = name;
     }
+
     public void createName() throws IOException {
         setFirstName();
         setFirstWord();

@@ -69,6 +69,7 @@ public class NPC {
         fullName = name;
     }
 
+
     public String selectWord(String extension, ArrayList<String> array) throws IOException {
         BufferedReader br = new BufferedReader(new FileReader(extension));
         Random ran = new Random();
@@ -120,15 +121,15 @@ public class NPC {
         setLastWord();
         String stringLastName = getFirstWord() + getLastWord();
         String stringFullName = getFirstName() + " " + stringLastName;
-        String stringTitle = "Professor " + getLastName();
         setLastName(stringLastName);
         setFullName(stringFullName);
+        String stringTitle = "Professor " + getLastName();
         setTitle(stringTitle);
     }
 
 
     public void greetPlayer(Player player, TextVisualizer text) {
-        if (location == player.getLocation() && getReadyforSpeech() == true ) {
+        if (getLocation() == player.getLocation() && getReadyforSpeech() == true ) {
             Random ran = new Random();
             int responseIndex = ran.nextInt(text.getStudentGreetings().size()-1);
             String npcGreeting = text.getStudentGreetings().get(responseIndex);

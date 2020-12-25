@@ -74,7 +74,6 @@ public class Player {
 	public void sortHouse() {
 		text.enterGreatHall(this);
 
-
 	}
 
 

@@ -1,4 +1,3 @@
-import java.io.*;
 import java.util.*;
 
 
@@ -109,8 +108,39 @@ public class TextVisualizer {
         studentGreetings.add(sample3);
     }
 
+    //SORTING-----------------------------------------------------------------------------------------------------------
+        public void firstQuestion() {
+            System.out.println("Which of the following would you most hate people to call you?\n");
+            String[] responses = {"Cowardly", "Ordinary",
+                    "Ignorant", "Selfish"};
+            System.out.println(responses);
+    }
 
+        public String[] firstResponse() {
+            String[] responses = {"Cowardly", "Ordinary",
+                    "Ignorant", "Selfish"};
+            return responses;
+        }
 
+        public void sortingHatDecision(Player player) {
+            System.out.println("Well " + player.getName() +", you have proven to be a tricky one.\n" +
+                    "Tut, tut, tut. Where to put you? I can sense the house you desire, but is it\n" +
+                    "the right fit for you? Perhaps, perhaps not. I have decided.\n" +
+                    player.getName() + ". You are a ...\n\n" +
+                    player.getHouse() + "!");
+        }
+    //PLAYER------------------------------------------------------------------------------------------------------------
+    public void whereTo() {
+        System.out.println("Where would you like to move to?\n");
+    }
 
+    public void movePlayer(String zone) { {
+            System.out.println("You start on your way to the " + zone);
+        }
+    }
+
+    public void noZoneWithThatName() {
+        System.out.println("You don't know of any area like that.\n");
+    }
 
 }

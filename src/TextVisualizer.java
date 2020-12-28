@@ -46,12 +46,48 @@ public class TextVisualizer {
                 "Up ahead, atop a towering cliff, you see Hogwarts.\n" +
                 "An imposing castle, dotted with towers, battlements, bright windows,\n" +
                 "and smoking chimneys. In clear view, you see the Great Hall, \n" +
-                "full of peers eager to welcome you into those magical halls.");
+                "full of peers eager to welcome you into those hallowed halls.");
     }
 
     public void describeLeavingBoat() {
-        System.out.println("");
+        System.out.println("The fleet of boats meanders toward\n" +
+                "a small dock at the base of the cliff. You and your\n" +
+                "peers disembark onto the dock and walk toward a stone entrance\n" +
+                "carved into the cliff face. The entrance is braced with two grand pillars, \n" +
+                "each adorned with a flaming torch-sconce.\n\n" +
+                "As pass through the threshold single-file, find yourself in a\n" +
+                "small chamber, filled with flickering torchlight. Granite walls\n" +
+                "surround you, and a marble staircase stands before you.\n" +
+                "Atop, you see a peculiar looking individual, tall, stooping, and adorned with a pointy.\n" +
+                "You discern that they must be a professor. As the line of students ascends\n" +
+                "the stairs, the professor raises their hand, motioning you all to stop.\n" +
+                "Naturally, you do."
+        );
     }
+
+    public void describeWelcomingStudents(NPC npc) {
+        System.out.println("The professor begins to speak to you and your peers:\n\n" +
+                "Hello First-Years, and welcome to Hogwarts School of Witchcraft and Wizardry." +
+                "I am " + npc.getTitle() + ". We are currently standing in the boathouse\n" +
+                "I know you are all very excited to explore the castle, but there are some procedures\n" +
+                "that must be undertaken. Please follow me double-file toward the foyer.\n\n" +
+                "**You and your peers follow the professor up the stairs. Torches adorning the walls ignite \n" +
+                "as you pass them. Reaching the top of the stairs, you find yourself in a sort of great foyer.\n" +
+                "The gothic-style chamber is alight with magical orbs, candles, and torches.\n" +
+                "To your left is a grand staircase, leading to a massive corridor with separate hallways\n" +
+                "branching from it. Ahead of you is a giant set of oaken doors, you see the Hogwarts\n" +
+                "crest carved into them. That must be the main entrance. To your right is another set of\n" +
+                "giant wooden doors, although you there are a great many people behind it. Peering through\n" +
+                "a crack in the threshold, you see the Great Hall. Thousands of candles float\n" +
+                "above the heads of thousands of Hogwarts Students. Four great tables run the length of the room.\n" +
+                "The ceiling appears to be enchanted, it reflects the star-lit sky outside.\n" +
+                "At the far-end of the room, you see a great stage where the professors ar seated.\n" +
+                "They inhabit a great long-table, with the Headmaster occupying the middle seat.\n" +
+                "Seeing your cohort entering, he stands and begins to speak at the golden owl-like\n" +
+                "lectern at the center of the stage.");
+
+    }
+
 
     public void describeGreatHall() {
 
@@ -113,7 +149,11 @@ public class TextVisualizer {
             System.out.println("Which of the following would you most hate people to call you?\n");
             String[] responses = {"Cowardly", "Ordinary",
                     "Ignorant", "Selfish"};
-            System.out.println(responses);
+            String toString = "";
+            for (String string: responses) {
+                toString += string + "\n";
+            }
+            System.out.println(toString);
     }
 
         public String[] firstResponse() {
@@ -127,7 +167,7 @@ public class TextVisualizer {
                     "Tut, tut, tut. Where to put you? I can sense the house you desire, but is it\n" +
                     "the right fit for you? Perhaps, perhaps not. I have decided.\n" +
                     player.getName() + ". You are a ...\n\n" +
-                    player.getHouse() + "!");
+                    player.getPlayerHouse().getName() + "!");
         }
     //PLAYER------------------------------------------------------------------------------------------------------------
     public void whereTo() {

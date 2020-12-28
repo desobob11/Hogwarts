@@ -20,6 +20,10 @@ public class Main {
 
 		Application app = new Application();
 		app.initializeObjects();
+		app.getPlayer().createCharacter();
+		app.getText().describeBoatRide();
+		app.getText().describeLeavingBoat();
+		app.getText().describeWelcomingStudents(app.getRandomNPC("prof"));
 		app.sortingCeremony();
 
 

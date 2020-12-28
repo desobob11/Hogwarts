@@ -4,7 +4,7 @@ public class Player {
 	private TextVisualizer text = new TextVisualizer();
 	private String name;
 	private int gender;
-	private String house;
+	private House playerHouse;
 	private ArrayList<Object> inventory = new ArrayList<Object>();
 	private Zone location = null;
 
@@ -19,8 +19,8 @@ public class Player {
 		gender = playerGender;
 	}
 
-	public void setHouse(String houseName) {
-		house = houseName;
+	public void setHouse(House house) {
+		playerHouse = house;
 	}
 
 	public String getName() {
@@ -31,19 +31,19 @@ public class Player {
 		return gender;
 	}
 
-	public String getHouse() {
-		return house;
+	public House getPlayerHouse() {
+		return playerHouse;
 	}
 
 	public ArrayList<Object> getInventory() {
 		return inventory;
 	}
 
-	public void setLocation(Zone zone) {
+	public void setZone(Zone zone) {
 		location = zone;
 	}
 
-	public Zone getLocation() {
+	public Zone getZone() {
 		return location;
 	}
 
@@ -68,7 +68,6 @@ public class Player {
 			setGender(1);
 		}
 		text.characterCreationComplete(this);
-		input.close();
 	}
 
 	public void sortHouse() {

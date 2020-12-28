@@ -129,7 +129,7 @@ public class NPC {
 
 
     public void greetPlayer(Player player, TextVisualizer text) {
-        if (getLocation() == player.getLocation() && getReadyforSpeech() == true ) {
+        if (getLocation() == player.getZone() && getReadyforSpeech() == true ) {
             Random ran = new Random();
             int responseIndex = ran.nextInt(text.getStudentGreetings().size()-1);
             String npcGreeting = text.getStudentGreetings().get(responseIndex);

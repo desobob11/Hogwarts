@@ -12,6 +12,9 @@ public class Application {
     private ArrayList<House> houseList = new ArrayList<House>();
     private Comparator<House> houseComparator;
 
+    public TextVisualizer getText() {
+        return text;
+    }
 
     public void initializeObjects() throws IOException {
         fac.initiateNPCS(9);
@@ -46,33 +49,41 @@ public class Application {
 
     public void appendCount(String userResponse, String[] array) {
 
-        if (array[0].equalsIgnoreCase(userResponse)) {
-            houseList.get(0).setProcessCount(houseList.get(0).getProcessCount() + 1);
-        }
-        if (array[1].equalsIgnoreCase(userResponse)) {
-            houseList.get(1).setProcessCount(houseList.get(1).getProcessCount() + 1);
-        }
-        if (array[2].equalsIgnoreCase(userResponse)) {
-            houseList.get(2).setProcessCount(houseList.get(2).getProcessCount() + 1);
-        }
-        if (array[3].equalsIgnoreCase(userResponse)) {
-            houseList.get(3).setProcessCount(houseList.get(3).getProcessCount() + 1);
+        for (int i = 0; i < array.length; i++) {
+            if(array[i].equalsIgnoreCase(userResponse)) {
+                houseList.get(i).setProcessCount(houseList.get(i).getProcessCount() + 1);
+            }
         }
     }
 
     public void sortingCeremony() {
+        int[] pointsArray = new int[4];
         Scanner input = new Scanner(System.in);
 
         text.firstQuestion();
         String userResponse = input.nextLine();
         appendCount(userResponse, text.firstResponse());
-        
 
-
+        for (int i = 0; i < pointsArray.length; i++) {
+            pointsArray[i] = getHouseList().get(i).getProcessCount();
+        }
+        Arrays.sort(pointsArray);
+        int chosenHouse = pointsArray[3];
+        for (House house: getHouseList()) {
+            if (house.getProcessCount() == chosenHouse) {
+                player.setHouse(house);
+                text.sortingHatDecision(player);
+            }
+        }
 
     }
-
-
+    public void discreteMovePlayer(String string) {
+        for (Zone zone: getZoneList()) {
+            if (zone.getName().equalsIgnoreCase(string)) {
+                player.setZone(zone);
+            }
+        }
+    }
 
     public NPC getRandomNPC(String type) {
         Random ran = new Random();
@@ -102,7 +113,7 @@ public class Application {
         String desiredZone = input.nextLine();
         for (Zone zone: zoneList) {
             if (zone.getName().equalsIgnoreCase(desiredZone)) {
-                player.setLocation(zone);
+                player.setZone(zone);
                 text.movePlayer(zone.getName());
                 return;
             }
@@ -110,4 +121,13 @@ public class Application {
         text.noZoneWithThatName();
         movePlayer();
     }
+
+
+
+
+
+
+
+
+
 }

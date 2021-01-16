@@ -11,6 +11,7 @@ public class Application {
     private ArrayList<Integer> houseCounts = new ArrayList<Integer>();
     private ArrayList<House> houseList = new ArrayList<House>();
     private Comparator<House> houseComparator;
+    private int[] pointsIntArray = {0, 0, 0, 0};
 
     public TextVisualizer getText() {
         return text;
@@ -18,8 +19,8 @@ public class Application {
 
     public void initializeObjects() throws IOException {
         fac.initiateNPCS(9);
-        fac.initiateZones();
         fac.initiateHouses();
+        fac.initiateZones();
 
         houseList = fac.getHouseList();
         studentList = fac.getStudentList();
@@ -47,36 +48,104 @@ public class Application {
         return player;
     }
 
-    public void appendCount(String userResponse, String[] array) {
+    public int[] getPointsIntArray() {
+        return pointsIntArray;
+    }
 
+    public static void cls(){
+        try {
+
+            if (System.getProperty("os.name").contains("Windows"))
+                new ProcessBuilder("cmd", "/c",
+                        "cls").inheritIO().start().waitFor();
+            else
+                Runtime.getRuntime().exec("clear");
+        } catch (IOException | InterruptedException ex) {}
+    }
+
+    public void appendCount(String userResponse, String[] array) {
         for (int i = 0; i < array.length; i++) {
-            if(array[i].equalsIgnoreCase(userResponse)) {
+            if (array[i].equalsIgnoreCase(userResponse)) {
                 houseList.get(i).setProcessCount(houseList.get(i).getProcessCount() + 1);
+                return;
             }
         }
     }
+
+
+    public void appendLongCount(String userResponse, ArrayList<String> array) {
+        if ("".equalsIgnoreCase(userResponse)) {
+            return;
+        }
+        else if (userResponse.charAt(0) >= 49 && userResponse.charAt(0) <= 52) {
+            int userResponse3 = Integer.parseInt(userResponse) - 1;
+            for (int i = 0; i < array.size(); i++) {
+                if (i == userResponse3) {
+                    houseList.get(i).setProcessCount(houseList.get(i).getProcessCount() + 1);
+                    return;
+                }
+            }
+        }
+    }
+
 
     public void sortingCeremony() {
         int[] pointsArray = new int[4];
         Scanner input = new Scanner(System.in);
 
         text.firstQuestion();
-        String userResponse = input.nextLine();
-        appendCount(userResponse, text.firstResponse());
+        String userResponse1 = input.nextLine();
+        appendCount(userResponse1, text.firstResponse());
 
-        for (int i = 0; i < pointsArray.length; i++) {
-            pointsArray[i] = getHouseList().get(i).getProcessCount();
+        text.secondQuestion();
+        String userResponse2 = input.nextLine();
+        appendCount(userResponse2, text.secondResponse());
+
+        text.thirdQuestion();
+        String userResponse3 = input.nextLine();
+        appendLongCount(userResponse3, text.thirdResponse());
+
+        text.fourthQuestion();
+        String userResponse4 = input.nextLine();
+        appendLongCount(userResponse4, text.fourthResponse());
+
+        text.fifthQuestion();
+        String userResponse5 = input.nextLine();
+        appendLongCount(userResponse5, text.fifthResponse());
+
+        text.sixthQuestion();
+        String userResponse6 = input.nextLine();
+        appendLongCount(userResponse6, text.sixthResponse());
+
+        text.seventhQuestion();
+        String userResponse7 = input.nextLine();
+        appendCount(userResponse7, text.seventhResponse());
+
+        text.eighthQuestion();
+        String userResponse8 = input.nextLine();
+        appendCount(userResponse8, text.eighthResponse());
+
+        sortingCeremonyResults(pointsArray);
+    }
+
+
+    public void sortingCeremonyResults(int[] array) {
+        for (int i = 0; i < array.length; i++) {
+            array[i] = getHouseList().get(i).getProcessCount();
         }
-        Arrays.sort(pointsArray);
-        int chosenHouse = pointsArray[3];
-        for (House house: getHouseList()) {
+        Arrays.sort(array);
+        int chosenHouse = array[3];
+        for (House house : getHouseList()) {
             if (house.getProcessCount() == chosenHouse) {
                 player.setHouse(house);
                 text.sortingHatDecision(player);
+                return;
             }
         }
-
     }
+
+
+
     public void discreteMovePlayer(String string) {
         for (Zone zone: getZoneList()) {
             if (zone.getName().equalsIgnoreCase(string)) {
@@ -122,7 +191,17 @@ public class Application {
         movePlayer();
     }
 
+    public void beginGame() throws IOException {
+        initializeObjects();
+        text.titleScreen();
+        player.createCharacter();
+        text.describeBoatRide();
+        text.describeLeavingBoat();
+        text.describeWelcomingStudents(getRandomNPC("prof"));
+        text.describeGreatHall();
+        sortingCeremony();
 
+    }
 
 
 

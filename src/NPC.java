@@ -86,10 +86,10 @@ public class NPC {
     public void setFirstName() throws IOException {
         String extension;
         if (getGender() == 1) {
-            extension = "text/FemaleFirstNames";
+            extension = "C:/Users/Des/Documents/GitHub/Hogwarts2/text/FemaleFirstNames.txt";
         }
         else {
-            extension = "text/FirstNames.txt";
+            extension = "C:/Users/Des/Documents/GitHub/Hogwarts2/text/FirstNames.txt";
         }
         ArrayList<String> firstNames = new ArrayList<String>();
         firstName = selectWord(extension, firstNames);
@@ -98,14 +98,14 @@ public class NPC {
 
 
     public void setFirstWord() throws IOException {
-        String extension = "text/FirstWord.txt";
+        String extension = "C:/Users/Des/Documents/GitHub/Hogwarts2/text/FirstWord.txt";
         ArrayList<String> firstWords = new ArrayList<String>();
         firstWord = selectWord(extension, firstWords);
     }
 
 
     public void setLastWord() throws IOException {
-        String extension = "text/LastWord.txt";
+        String extension = "C:/Users/Des/Documents/GitHub/Hogwarts2/text/LastWord.txt";
         ArrayList<String> lastWords = new ArrayList<String>();
         lastWord = selectWord(extension, lastWords);
     }

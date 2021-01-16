@@ -1,0 +1,24 @@
+
+Boat Docks
+Foyer
+Great Hall
+Upper Halls
+Lower Halls
+Great Staircase
+Gryffindor Common Room
+Ravenclaw Common Room
+Hufflepuff Common Room
+Slytherin Common Room
+Quidditch Pitch
+Forbidden Forest
+Potions Classroom
+Charms Classroom
+History of Magic Classroom
+Defense Against the Dark Arts Classroom
+Herbology Greenhouse
+Astronomy Tower
+Standing Stones
+Courtyard
+Library
+Room of Requirement
+Headmaster's Office

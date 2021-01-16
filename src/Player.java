@@ -69,15 +69,7 @@ public class Player {
 		}
 		text.characterCreationComplete(this);
 	}
-
-	public void sortHouse() {
-		text.enterGreatHall(this);
-
-	}
-
-
-
-
-
-
 }
+
+
+

@@ -51,7 +51,8 @@ public class Factory {
     }
 
     public void createHouseList() throws IOException {
-        BufferedReader br = new BufferedReader(new FileReader("text/HouseNames"));
+        BufferedReader br = new BufferedReader(new FileReader(
+                "C:/Users/Des/Documents/GitHub/Hogwarts2/text/HouseNames.txt"));
         ArrayList<String> names = new ArrayList<String>();
 
         String line = br.readLine();
@@ -76,7 +77,8 @@ public class Factory {
 
 
     public ArrayList<Zone> initiateZones() throws IOException {
-        BufferedReader br = new BufferedReader(new FileReader("text/Zones"));
+        BufferedReader br = new BufferedReader(new FileReader(
+                "C:/Users/Des/Documents/GitHub/Hogwarts2/text/Zones.txt"));
         ArrayList<String> names = new ArrayList<String>();
 
         String line = br.readLine();

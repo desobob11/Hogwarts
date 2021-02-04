@@ -24,6 +24,22 @@ public class TextVisualizer {
 
     //MAIN MENU---------------------------------------------------------------------------------------------------------
     
+    public void displayMainMenu(Player player) {
+        cls();
+        System.out.println("\nYou are currently located at the " + player.getZone().getName());
+        System.out.println("What would you like to do?\n\n" +
+                "Options:\n\n" +
+                "-Move\n" +
+                "-Search\n");
+    }
+
+    public void end() {
+        String end = input.nextLine();
+    }
+
+
+
+
 
     //ZONE--------------------------------------------------------------------------------------------------------------
     public void searchContents() {
@@ -46,13 +62,18 @@ public class TextVisualizer {
         System.out.println("You quit your search in this area.\n");
     }
 
+    public void searchRoom(Player player) {
+        cls();
+        System.out.println("You look around the " + player.getZone().getName() + " and find: \n\n");
+    }
+
     //Descriptions================================================
 
     public void titleScreen() {
         cls();
         System.out.println("\nWelcome to the Hogwarts Adventure Text-Based Game, authored by\n" +
                 "Desmond O'Brien\n\n Please enter anything to begin");
-        String response = input.nextLine();
+        end();
     }
 
     public void describeBoatRide() {
@@ -69,7 +90,7 @@ public class TextVisualizer {
                 "Torchlight flickers beyond its threshold. Along with your fellow students,\n" +
                 "you disembark from your boat, step foot on the wooden dock, and proceed toward\n" +
                 "the cave opening");
-        String end = input.nextLine();
+        end();
     }
 
     public void describeLeavingBoat() {
@@ -80,7 +101,7 @@ public class TextVisualizer {
                 "you disembark from your boat, step foot on the wooden dock, and proceed toward\n" +
                 "the cave opening. Inside, you see a professor standing atop a great stone stairway\n" +
                 "that climbs steadily up, toward sounds of merrymaking and twinkling lioghts");
-        String end = input.nextLine();
+        end();
     }
 
     public void describeWelcomingStudents(NPC npc) {
@@ -104,7 +125,7 @@ public class TextVisualizer {
                 "They inhabit a great long-table, with the Headmaster occupying the middle seat.\n" +
                 "Seeing your cohort entering, he stands and begins to speak at the golden owl-like\n" +
                 "lectern at the center of the stage.");
-        String end = input.nextLine();
+        end();
     }
 
 
@@ -120,7 +141,7 @@ public class TextVisualizer {
     public void initiateCreateCharacter() {
         cls();
         System.out.println("\nHello, and welcome to Hogwarts. I am going to ask you some simple questions.\n");
-        String end = input.nextLine();
+        end();
     }
 
     public void characterName() {
@@ -138,7 +159,7 @@ public class TextVisualizer {
         cls();
         System.out.println("\nExcellent " + player.getName() + "! Now, all first years follow me to great hall.\n" +
                 "We are about to begin the Sorting Ceremony\n");
-        String end = input.nextLine();
+        end();
     }
 
     public void boyOrGirlOnly() {
@@ -156,7 +177,7 @@ public class TextVisualizer {
                 "to determine which house you are destined to represent during\n" +
                 "your time here at hogwarts. Let us begin!\n\n"
                  + player.getName() + ", you will be going first.");
-        String end = input.nextLine();
+        end();
     }
 
     //NPC---------------------------------------------------------------------------------------------------------------
@@ -327,21 +348,31 @@ public class TextVisualizer {
                     "the right fit for you? Perhaps, perhaps not. I have decided.\n" +
                     player.getName() + ". You are a ...\n\n" +
                     player.getPlayerHouse().getName() + "!");
+            end();
         }
     //PLAYER------------------------------------------------------------------------------------------------------------
     public void whereTo() {
+        cls();
         System.out.println("Where would you like to move to?\n");
     }
 
     public void movePlayer(String zone) { {
-            System.out.println("You start on your way to the " + zone);
-        String end = input.nextLine();
+        cls();
+        System.out.println("You start on your way to the " + zone);
+        end();
         }
     }
 
     public void noZoneWithThatName() {
+        cls();
         System.out.println("You don't know of any area like that.\n");
-        String end = input.nextLine();
+        end();
+    }
+
+    public void arrival(Player player) {
+        cls();
+        System.out.println("\nYou have arrived at the " + player.getZone().getName());
+        end();
     }
 
     //ERROR-------------------------------------------------------------------------------------------------------------

@@ -128,6 +128,18 @@ public class Application {
         sortingCeremonyResults(pointsArray);
     }
 
+    public void scrambleNPCs() {
+        Random ran = new Random();
+        for (Professor prof: professorList) {
+            int index = ran.nextInt(zoneList.size());
+            prof.setLocation(zoneList.get(index));
+        }
+        for (Student stu:studentList) {
+            int index = ran.nextInt(zoneList.size());
+            stu.setLocation(zoneList.get(index));
+        }
+
+    }
 
     public void sortingCeremonyResults(int[] array) {
         for (int i = 0; i < array.length; i++) {
@@ -144,7 +156,21 @@ public class Application {
         }
     }
 
-
+    public void searchRoom() {
+        text.searchRoom(player);
+        for (Student student: studentList) {
+            if (player.getZone().equals(student.getLocation())) {
+                System.out.println("-" + student.getFullName() + "\n");
+            }
+        }
+        for (Professor prof: professorList) {
+            if (player.getZone().equals(prof.getLocation())) {
+                System.out.println("-" + prof.getFullName() + "\n");
+            }
+        }
+        text.end();
+        return;
+    }
 
     public void discreteMovePlayer(String string) {
         for (Zone zone: getZoneList()) {
@@ -184,6 +210,7 @@ public class Application {
             if (zone.getName().equalsIgnoreCase(desiredZone)) {
                 player.setZone(zone);
                 text.movePlayer(zone.getName());
+                text.arrival(player);
                 return;
             }
         }
@@ -200,13 +227,26 @@ public class Application {
         text.describeWelcomingStudents(getRandomNPC("prof"));
         text.describeGreatHall();
         sortingCeremony();
-
+        scrambleNPCs();
+        discreteMovePlayer(player.getPlayerHouse().getName() + " Common Room");
+        System.out.println(professorList.toString());
+        mainMenu();
     }
 
+    public void mainMenu() {
+        Scanner input = new Scanner(System.in);
 
-
-
-
-
-
+        text.displayMainMenu(player);
+        String decision = input.nextLine();
+        if ("move".equalsIgnoreCase(decision)) {
+            movePlayer();
+            mainMenu();
+        }
+        else if("search".equalsIgnoreCase(decision)) {
+                searchRoom();
+                mainMenu();
+        }
+    }
 }
+
+
